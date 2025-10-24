@@ -57,6 +57,7 @@ class Batch:
         """После проверки заказа, создает заказ"""
         if self.can_allocate(line):
             self._allocations.add(line)
+        self.available_quantity -= line.qty
 
     def deallocate(self, line: OrderLine):
         if line in self._allocations:
